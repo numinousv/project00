@@ -3,7 +3,7 @@ import "./style.css";
 // statiska sidor
 // måste referera till den specifika .html-filen pga "?raw"-suffixet
 import headerHTML from "./views/static/header/header.html?raw";
-import homeHTML from "./views/static/home/home.html?raw";
+import home from "./views/home/home";
 import contactHTML from "./views/static/contact/contact.html?raw";
 import footerHTML from "./views/static/footer/footer.html?raw";
 
@@ -22,7 +22,7 @@ const getCurrentPage = () => {
 
   switch (currentPage) {
     case "/home":
-      return homeHTML;
+      return home();
     // lägg tillbaka när vi har en funktion i /about
     case "/about":
       return about();
