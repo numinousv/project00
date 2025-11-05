@@ -4,11 +4,9 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    --door-moss: #ccddbb;
-    --door-sky: #c7d8db;
-    --door-sun: #f8e9a0;
-    --door-rose: #f7d9c5;
-    --door-lemon: #fcf4d1;
+
+    --font-size-lg: 82px;
+    --font-size-lg-mobile: 56px;
 }
 
 .grid {
@@ -32,11 +30,17 @@
     margin: 0;
     padding: 0;
     border: 0;
+    border-radius: 8px;
     font-family: 'Abril Fatface', sans-serif;
     font-size: 36px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+.grid__item:focus,
+.grid__item:focus-visible {
+    outline: none;
 }
 
 .grid__item-number {
@@ -51,6 +55,7 @@
 
 .grid__item_1 {
     grid-area: 7 / 1 / span 2 / span 2;
+    font-size: var(--font-size-lg-mobile);
 }
 
 .grid__item_2 {
@@ -63,6 +68,7 @@
 
 .grid__item_4 {
     grid-area: 11 / 1 / span 2 / span 2;
+    font-size: var(--font-size-lg-mobile);
 }
 
 .grid__item_5 {
@@ -71,6 +77,7 @@
 
 .grid__item_6 {
     grid-area: 2 / 4 / span 2 / span 2;
+    font-size: var(--font-size-lg-mobile);
 }
 
 .grid__item_7 {
@@ -99,6 +106,7 @@
 
 .grid__item_13 {
     grid-area: 1 / 1 / span 2 / span 2;
+    font-size: var(--font-size-lg-mobile);
 }
 
 .grid__item_14 {
@@ -131,6 +139,7 @@
 
 .grid__item_21 {
     grid-area: 10 / 4 / span 2 / span 2;
+    font-size: var(--font-size-lg-mobile);
 }
 
 .grid__item_22 {
@@ -143,6 +152,7 @@
 
 .grid__item_24 {
     grid-area: 5 / 1 / span 2 / span 2;
+    font-size: var(--font-size-lg-mobile);
 }
 
 @media screen and (min-width: 425px) {
@@ -155,6 +165,11 @@
     .grid__item {
         font-size: 46px;
     }
+
+    .grid__item_1, .grid__item_4, .grid__item_6,
+    .grid__item_13, .grid__item_21, .grid__item_24 {
+        font-size: 70px;
+    }
 }
 
 @media screen and (min-width: 1025px) {
@@ -166,6 +181,7 @@
 
     .grid__item_1 {
         grid-area: 1 / 6 / span 2 / span 2;
+        font-size: var(--font-size-lg);
     }
 
     .grid__item_2 {
@@ -178,6 +194,7 @@
 
     .grid__item_4 {
         grid-area: 5 / 6 / span 2 / span 2;
+        font-size: var(--font-size-lg);
     }
 
     .grid__item_5 {
@@ -186,6 +203,7 @@
 
     .grid__item_6 {
         grid-area: 2 / 4 / span 2 / span 2;
+        font-size: var(--font-size-lg);
     }
 
     .grid__item_7 {
@@ -214,6 +232,7 @@
 
     .grid__item_13 {
         grid-area: 1 / 1 / span 2 / span 2;
+        font-size: var(--font-size-lg);
     }
 
     .grid__item_14 {
@@ -246,6 +265,7 @@
 
     .grid__item_21 {
         grid-area: 4 / 9 / span 2 / span 2;
+        font-size: var(--font-size-lg);
     }
 
     .grid__item_22 {
@@ -258,5 +278,6 @@
 
     .grid__item_24 {
         grid-area: 5 / 1 / span 2 / span 2;
+        font-size: var(--font-size-lg);
     }
 }
