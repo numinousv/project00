@@ -1,7 +1,7 @@
 // global css
 import "./style.css";
 // övrig css
-import "./views/static/header/header.css";
+// import "./views/static/header/header.css";
 
 // statiska sidor
 // måste referera till den specifika .html-filen pga "?raw"-suffixet
