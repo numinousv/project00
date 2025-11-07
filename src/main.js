@@ -1,6 +1,8 @@
 // global css
 import "./style.css";
 // övrig css
+
+//denna css import behövs inte, css filen kommer tas bort senare används tailwind istället.
 // import "./views/static/header/header.css";
 
 // statiska sidor
