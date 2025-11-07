@@ -1,60 +1,48 @@
 // import './home.css'
-import { cards } from '../../components/cards'
-import popup from '../../components/popup/popup'
+import { cards, saveOpenedCardNumber } from '../../components/cards'
+import createPopup from '../../components/popup/popup'
 
 export default function home() {
+    //skapar ett element med class 'home'
     const home = document.createElement('section')
     home.classList.add('home')
 
+    //skapar ett nytt element med class 'grid'
     const gridEl = document.createElement('div')
     gridEl.classList.add('grid')
 
-    let numbers = []
-
-    for (let i = 1; i < 25; i++) {
-        numbers.push(i)
-    }
-
-    numbers.forEach((num) => {
+    //loopar genom cards
+    cards.forEach((card) => {
+        //nytt element <button> med 2 class
         const box = document.createElement('button')
-        box.classList.add('grid__item', `grid__item_${num}`)
+        box.classList.add('grid__item', `grid__item_${card.number}`)
+
+        //fyller elementet med innerHTML
         box.innerHTML = `
          <span class="grid__item-number">
-            ${num}
+            ${card.number}
         </span>
         `
+        //event listener för varje knapp; hämtar vädren
+        // från rätt kort och använder dem som argument
+        // till popup funktionen för att skapa ett popup-element.
+        // öppnar popup
         box.addEventListener('click', () => {
-            const card = cards.find((item) => {
-                return item.number === num
-            })
-            const popupEl = popup(card.imageUrl, card.text, card.text)
-            popupEl.classList.add('popup_opened')
-            document.addEventListener('keydown', closePopupEscape)
-            home.append(popupEl)
-
-            function closePopupEscape(evt) {
-                if (evt.key === 'Escape') {
-                    const popup = document.querySelector('.popup_opened')
-                    if (popup) {
-                        popup.classList.remove('popup_opened')
-                    }
-                }
-            }
-
-            const closeBtn = popupEl.querySelector('.popup__close-button')
-
-            closeBtn.addEventListener('click', () => {
-                popupEl.classList.remove('popup_opened')
-                document.removeEventListener('keydown', closePopupEscape)
-                popupEl.addEventListener('transitionend', () => {
-                    popupEl.remove()
-                })
-            })
+            saveOpenedCardNumber(card.number)
+            const { popup, openPopup } = createPopup(
+                card.imageUrl,
+                card.text,
+                card.text
+            )
+            home.append(popup)
+            openPopup()
         })
 
+        //lägger in ett färdigt element i grid-elementet
         gridEl.appendChild(box)
     })
 
+    //lägger in ett grid-element med 24 stycken children i home-elementet
     home.append(gridEl)
 
     return home
