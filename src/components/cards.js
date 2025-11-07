@@ -123,18 +123,18 @@ export const cards = [
     }
 ]
 
-const openedCards = JSON.parse(localStorage.getItem('openedCards')) || []
+export const openedCardsNumbers = JSON.parse(localStorage.getItem('openedCardsNumbers')) || []
 
-if (openedCards.length) {
+if (openedCardsNumbers.length) {
     cards.forEach((card) => {
-        if (openedCards.includes(card.number)) {
+        if (openedCardsNumbers.includes(card.number)) {
             card.opened = true
         }
     })
 }
 
 export function saveOpenedCardNumber(num) {
-    if (openedCards.includes(num)) return
-    openedCards.push(num)
-    localStorage.setItem('cardsOpened', JSON.stringify(openedCards))
+    if (openedCardsNumbers.includes(num)) return
+    openedCardsNumbers.push(num)
+    localStorage.setItem('openedCardsNumbers', JSON.stringify(openedCardsNumbers))
 }

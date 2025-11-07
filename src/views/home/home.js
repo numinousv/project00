@@ -1,5 +1,9 @@
 // import './home.css'
-import { cards, saveOpenedCardNumber } from '../../components/cards'
+import {
+    cards,
+    openedCardsNumbers,
+    saveOpenedCardNumber
+} from '../../components/cards'
 import createPopup from '../../components/popup/popup'
 
 export default function home() {
@@ -23,12 +27,21 @@ export default function home() {
             ${card.number}
         </span>
         `
+
+        if (openedCardsNumbers.includes(card.number)) {
+            renderBox(box, card.imageUrl)
+        }
+
         //event listener för varje knapp; hämtar vädren
         // från rätt kort och använder dem som argument
         // till popup funktionen för att skapa ett popup-element.
         // öppnar popup
         box.addEventListener('click', () => {
-            saveOpenedCardNumber(card.number)
+            if (!box.classList.contains('grid__item_opened')) {
+                saveOpenedCardNumber(card.number)
+                renderBox(box, card.imageUrl)
+            }
+
             const { popup, openPopup } = createPopup(
                 card.imageUrl,
                 card.text,
@@ -41,6 +54,11 @@ export default function home() {
         //lägger in ett färdigt element i grid-elementet
         gridEl.appendChild(box)
     })
+
+    function renderBox(b, image) {
+        b.classList.add('grid__item_opened')
+        b.style.backgroundImage = `url('${image}')`
+    }
 
     //lägger in ett grid-element med 24 stycken children i home-elementet
     home.append(gridEl)
