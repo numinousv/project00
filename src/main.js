@@ -11,6 +11,7 @@ import headerHTML from "./views/static/header/header.html?raw";
 import home from "./views/home/home";
 import contactHTML from "./views/static/contact/contact.html?raw";
 import footerHTML from "./views/static/footer/footer.html?raw";
+import "./views/static/footer/footer.css";
 
 // dynamiska sidor
 // behöver bara referera till mappen om filen heter index.js.
@@ -71,3 +72,23 @@ renderApp();
 //rerender logic
 // en eventListner som lyssnar på ändringar i URL:ens historik
 window.addEventListener("popstate", renderApp);
+
+//Dark Mode Toggle Button Logik
+const themeToggle = document.querySelector("#theme-toggle");
+themeToggle.textContent = "🌙";
+
+if (localStorage.getItem("theme") === "dark") {
+  document.documentElement.classList.add("dark");
+  themeToggle.classList.add("dark-mode");
+  themeToggle.textContent = "☀️";
+}
+
+themeToggle.addEventListener("click", () => {
+  themeToggle.classList.toggle("dark-mode");
+
+  themeToggle.textContent = themeToggle.classList.contains("dark-mode")? "☀️" : "🌙";
+  document.documentElement.classList.toggle("dark");
+
+  const theme = document.documentElement.classList.contains("dark") ?"dark" : "light";
+  localStorage.setItem("theme", theme);
+});
