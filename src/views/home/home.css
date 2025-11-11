@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
 .home {
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
 
@@ -12,7 +13,7 @@
     margin: 0 auto;
     display: grid;
     width: 100%;
-    max-width: 1560px;
+    max-width: 1760px;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(12, 100px);
     justify-content: center;
@@ -20,6 +21,7 @@
     grid-gap: 1rem;
     padding-block: 90px;
     padding-inline: 24px;
+    line-height: 24px;
     box-sizing: border-box;
 }
 
@@ -31,11 +33,16 @@
     border: 0;
     border-radius: 8px;
     font-family: 'Abril Fatface', sans-serif;
-    font-size: 36px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid__item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .grid__item:focus,
@@ -70,10 +77,21 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    padding: 16px;
+    padding: 10px;
     perspective: 0;
     transform-origin: bottom left;
+    font-size: 28px;
 }
+
+    .grid__item_1 .grid__item-number,
+    .grid__item_4 .grid__item-number,
+    .grid__item_6 .grid__item-number,
+    .grid__item_13 .grid__item-number,
+    .grid__item_21 .grid__item-number,
+    .grid__item_24 .grid__item-number {
+        font-size: 46px;
+        line-height: 46px;
+    }
 
 .grid__item_opened .grid__item-number {
      color: #494949;
@@ -183,28 +201,46 @@
 
 @media screen and (min-width: 425px) {
     .grid {
-        grid-gap: 1.5rem;
-        padding-inline: 42px;
+        padding-inline: 34px;
         grid-template-rows: repeat(12, 150px);
     }
 
-    .grid__item {
-        font-size: 46px;
+
+    .grid__item-number {
+        font-size: 36px;
+        line-height: 36px;
+        padding: 12px;
+
     }
 
-    .grid__item_1,
-    .grid__item_4,
-    .grid__item_6,
-    .grid__item_13,
-    .grid__item_21,
-    .grid__item_24 {
+    .grid__item_1 .grid__item-number,
+    .grid__item_4 .grid__item-number,
+    .grid__item_6 .grid__item-number,
+    .grid__item_13 .grid__item-number,
+    .grid__item_21 .grid__item-number,
+    .grid__item_24 .grid__item-number {
         font-size: 70px;
+        line-height: 70px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .grid {
+        grid-gap: 1.5rem;
+        padding-inline: 42px;
+    }
+
+        .grid__item-number {
+        font-size: 46px;
+        line-height: 46px;
+        padding: 16px;
+
     }
 }
 
 @media screen and (min-width: 1025px) {
     .grid {
-        padding-inline: 56px;
+        padding-inline: 76px;
         grid-template-columns: repeat(10, 1fr);
         grid-template-rows: repeat(6, 180px);
     }

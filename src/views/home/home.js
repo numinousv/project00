@@ -21,8 +21,6 @@ export default function home() {
         const box = document.createElement('button')
         box.classList.add('grid__item', `grid__item_${card.number}`)
 
-         box.classList.add('card')
-
         //fyller elementet med innerHTML
         box.innerHTML = `
          <span class="grid__item-number">
