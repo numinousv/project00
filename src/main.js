@@ -19,6 +19,7 @@ import "./views/static/footer/footer.css";
 
 // lägg tillbaka när vi har en funktion i /about
 import about from "./views/about";
+import countdown from "./views/countdown/countdown";
 
 // en funktion för att rendera olika sidor baserat på webbläsarens "path"
 // för att ändra pathen kan du t.ex. skapa en anchor tag med href="/home"
@@ -34,6 +35,8 @@ const getCurrentPage = () => {
       return about();
     case "/contact":
       return contactHTML;
+    case "/countdown":
+      return countdown();
     default:
       return (window.location.pathname = "/home");
   }
