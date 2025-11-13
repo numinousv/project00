@@ -113,7 +113,7 @@ h1 {
 
 #app {
   /* background-color:  rgb(154, 172, 220); */
-  background-image: url("./public/seoyeon-choi-UyoJIy0D-5c-unsplash.webp");
+  background-image: url("/public/seoyeon-choi-UyoJIy0D-5c-unsplash.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

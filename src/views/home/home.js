@@ -44,7 +44,6 @@ export default function home() {
 
             const { popup, openPopup } = createPopup(
                 card.imageUrl,
-                card.text,
                 card.text
             )
             home.append(popup)
